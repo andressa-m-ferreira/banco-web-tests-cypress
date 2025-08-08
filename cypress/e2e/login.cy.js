@@ -1,14 +1,14 @@
 describe('Login', () => {
   beforeEach(() => {
     // Arrange
-    cy.visit(Cypress.env('URL'))
+    cy.visit('/')
   })
 
   it('Login com dados válidos deve permitir acesso ao sistema', () => {
     // Act
     cy.fixture('credenciais').then(credenciais =>{
         cy.get('#username').click().type(credenciais.valida.usuario)
-        cy.get('#username').click().type(credenciais.valida.senha)
+        cy.get('#senha').click().type(credenciais.valida.senha)
     })
     
     cy.contains('button', 'Entrar').click()
@@ -21,7 +21,7 @@ describe('Login', () => {
     // Act
     cy.fixture('credenciais').then(credenciais =>{
         cy.get('#username').click().type(credenciais.invalida.usuario)
-        cy.get('#username').click().type(credenciais.invalida.senha)
+        cy.get('#senha').click().type(credenciais.invalida.senha)
     })
     
     cy.contains('button', 'Entrar').click()
